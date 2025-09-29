@@ -19,6 +19,8 @@ inside the <p> element with id="t1-msg".
 💡 Hint:
 document.getElementById("t1-msg").innerHTML = "Hello, World!";
 */
+
+document.getElementById("t1-msg").innerHTML = "Hello, World!";
  
 
 /*  
@@ -40,6 +42,13 @@ button.addEventListener("click", function () {
     // change text here
 });
 */
+
+const button = document.getElementById("t2-btn");
+const statusPar = document.getElementById("t2-status");
+
+button.addEventListener("click", function () {
+    statusPar.textContent = "You clicked the button!";
+});
  
 
 /*  
@@ -69,6 +78,18 @@ data.content   // the quote text
 data.author    // the author
 */
  
+const loadQuoteButton = document.getElementById("t3-loadQuote");
+const quoteParagraph = document.getElementById("t3-quote");
+const authorParagraph = document.getElementById("t3-author");
+
+loadQuoteButton.addEventListener("click", function () {
+    fetch("https://dummyjson.com/quotes/random")
+        .then(response => response.json())
+        .then(data => {
+            quoteParagraph.textContent = data.quote;
+            authorParagraph.textContent = data.author;
+        });
+});
 
 /*  
 =======================================
@@ -94,3 +115,22 @@ data.main.temp      → temperature (°C)
 data.main.humidity  → humidity (%)
 data.wind.speed     → wind speed (m/s)
 */
+
+const weatherButton = document.getElementById("t4-loadWx");
+const tempElement = document.getElementById("t4-temp");
+const humidityElement = document.getElementById("t4-hum");
+const windElement = document.getElementById("t4-wind");
+
+weatherButton.addEventListener("click", function () {
+    const apiKey = "d56adb99919e7f9e7fdea5eb07c9be13"; 
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Dammam&appid=${apiKey}&units=metric`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            tempElement.textContent = `${data.main.temp} °C`;
+            humidityElement.textContent = `${data.main.humidity} %`;
+            windElement.textContent = `${data.wind.speed} m/s`;
+        });
+});
+
