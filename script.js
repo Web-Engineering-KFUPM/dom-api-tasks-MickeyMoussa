@@ -44,10 +44,10 @@ button.addEventListener("click", function () {
 */
 
 const button = document.getElementById("t2-btn");
-const statusParagraph = document.getElementById("t2-status");
+const statusPar = document.getElementById("t2-status");
 
 button.addEventListener("click", function () {
-    statusParagraph.textContent = "You clicked the button!";
+    statusPar.textContent = "You clicked the button!";
 });
  
 
