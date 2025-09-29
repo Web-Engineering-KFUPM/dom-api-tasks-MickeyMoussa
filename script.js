@@ -19,6 +19,8 @@ inside the <p> element with id="t1-msg".
 💡 Hint:
 document.getElementById("t1-msg").innerHTML = "Hello, World!";
 */
+
+document.getElementById("t1-msg").innerHTML = "Hello, World!";
  
 
 /*  
@@ -40,6 +42,13 @@ button.addEventListener("click", function () {
     // change text here
 });
 */
+
+const button = document.getElementById("t2-btn");
+const statusParagraph = document.getElementById("t2-status");
+
+button.addEventListener("click", function () {
+    statusParagraph.textContent = "You clicked the button!";
+});
  
 
 /*  
