@@ -78,6 +78,18 @@ data.content   // the quote text
 data.author    // the author
 */
  
+const loadQuoteButton = document.getElementById("t3-loadQuote");
+const quoteParagraph = document.getElementById("t3-quote");
+const authorParagraph = document.getElementById("t3-author");
+
+loadQuoteButton.addEventListener("click", function () {
+    fetch("https://dummyjson.com/quotes/random")
+        .then(response => response.json())
+        .then(data => {
+            quoteParagraph.textContent = data.quote;
+            authorParagraph.textContent = data.author;
+        });
+});
 
 /*  
 =======================================
